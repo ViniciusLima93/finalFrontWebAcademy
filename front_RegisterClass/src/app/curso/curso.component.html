@@ -1,0 +1,36 @@
+<mat-card>
+<h2>Criar Novo Curso</h2>
+<mat-form-field>
+  <input matInput type="text" #nomeCursoInput placeholder="Nome do Curso">
+  <label>
+    Vagas no Curso
+  </label>
+  <input matInput type="number" #vagasCursosInput>
+</mat-form-field>
+<button mat-raised-button style=" background-color:	#00FF7F;" (click)="criarCurso(nomeCursoInput.value, vagasCursosInput.valueAsNumber)">Criar Curso</button>
+</mat-card>
+
+
+  <h2>Lista de Cursos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Curso</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let curso of cursos">
+        <td>{{ curso.ID_Curso }}</td>
+        <td>{{ curso.Nome }}</td>
+        <td>
+          <button mat-button  (click)="atualizarCurso(curso)"><mat-icon>edit</mat-icon></button>
+          <button mat-button  (click)="deletarCurso(curso.ID_Curso)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  

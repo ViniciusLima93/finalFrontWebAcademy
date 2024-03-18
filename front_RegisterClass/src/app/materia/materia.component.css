@@ -1,0 +1,54 @@
+
+mat-card{
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 10px; 
+    border: 1px solid #C0C0C0;
+    
+}  
+h2 {
+  text-align: center;
+  padding: 10px;
+}
+
+form {
+  margin-bottom: 10px;
+}
+
+button.mat-raised-button[type="submit"] {
+  background-color: #00FF7F;
+  margin-right: 10px;
+}
+
+table {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-collapse: collapse;
+  align-items: center;
+}
+
+td, th {
+  border:solid 1px #f2f2f2;
+  padding: 10px;
+ 
+}
+
+th {
+  background-color: #f2f2f2;
+  align-items: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+button.mat-button[type="button"] {
+  align-items: center;
+}

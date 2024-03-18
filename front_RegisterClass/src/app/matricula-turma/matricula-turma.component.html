@@ -1,0 +1,32 @@
+
+<mat-card>
+  <h2>Matricula de Discentes em Turmas</h2>
+    <mat-list-item *ngFor="let turma of turmas">
+      {{ turma.Nome }}
+      <button   mat-stroked-button (click)="mostrarOpcoesTurma(turma)">Opções</button>
+      
+      <div *ngIf="mostrarOpcoes && selectedTurma.ID_Turma === turma.ID_Turma">
+        <h3>Opções para {{ selectedTurma.Nome }}</h3>
+        <br>
+        <h4>Matriculas dos Discentes na Turma:</h4>
+        <mat-list>
+          <mat-list-item *ngFor="let matricula of matriculasDiscentesTurma">
+            {{ matricula }}
+            <button mat-button (click)="deletarMatricula(selectedTurma.ID_Turma, matricula)"><mat-icon>delete</mat-icon></button>
+          </mat-list-item>
+        </mat-list>
+        
+        <form (submit)="cadastrarMatricula()">
+          <mat-form-field >
+          <mat-select [(ngModel)]="novaMatricula" name="novaMatricula">
+            <mat-option value="" disabled selected>Selecione um discente</mat-option>
+            <mat-option *ngFor="let discente of discentes" [value]="discente.Matricula">{{ discente.Nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+          <button mat-raised-button type="submit">Cadastrar Matrícula</button>
+        </form>
+      </div>
+   
+    </mat-list-item>
+ 
+</mat-card>

@@ -1,0 +1,60 @@
+<mat-card>
+    <h2>{{ novaMateria.ID_Materia ? 'Editar Matéria' : 'Adicionar Matéria' }}</h2>
+    <form (submit)="novaMateria.ID_Materia ? atualizarMateria() : adicionarMateria()">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" [(ngModel)]="novaMateria.Nome" name="nome" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Carga Horária</mat-label>
+        <input matInput type="text" [(ngModel)]="novaMateria.CargaHoraria" name="cargaHoraria" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Ementa</mat-label>
+        <input matInput type="text" [(ngModel)]="novaMateria.Ementa" name="ementa" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Curso</mat-label>
+        <mat-select [(ngModel)]="novaMateria.fk_Curso_ID_Curso" name="curso" required>
+          <mat-option *ngFor="let curso of cursos" [value]="curso.ID_Curso">{{ curso.Nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button type="submit">{{ novaMateria.ID_Materia ? 'Atualizar Matéria' : 'Adicionar Matéria' }}</button>
+    </form>
+    <button mat-stroked-button type="button" (click)="cancelarEdicao()">Cancelar</button>
+  </mat-card>
+
+  <mat-card *ngIf="detalhesMateria">
+    <h2>Detalhes da Matéria</h2>
+    <p>Carga Horária: {{ detalhesMateria.CargaHoraria }}</p>
+    <p>Ementa: {{ detalhesMateria.Ementa }}</p>
+    <p>ID do Curso: {{ detalhesMateria.fk_Curso_ID_Curso }}</p>
+    <p>Nome do Curso: {{ detalhesCurso?.Nome }}</p>
+</mat-card>
+
+  <h2>Lista de Matérias</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let materia of materias">
+        <td>{{ materia.ID_Materia }}</td>
+        <td>{{ materia.Nome }}</td>
+        <td><button mat-stroked-button (click)="mostrarDetalhes(materia)">Detalhes</button></td>
+        <td>
+          <button mat-button (click)="editarMateria(materia)"><mat-icon>edit</mat-icon></button>
+          <button mat-button (click)="deletarMateria(materia)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

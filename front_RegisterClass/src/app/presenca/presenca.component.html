@@ -1,0 +1,27 @@
+<mat-card mat-card-title="Presença e Avaliação de Discentes">
+    <h2>Lista de Discentes Matriculados</h2>
+</mat-card>
+
+<table>
+    <thead>
+        <tr>
+            <th>Turma</th>
+            <th>Aluno</th>
+            <th> % Presença</th>
+            <th>Nota</th>
+            <th></th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let turma of turmas;let i = index">
+            <td>{{turma.Nome_Turma}}</td>
+            <td>{{turma.Nome_Discente}}</td>
+            <td><input  matInput placeholder="Insira a % de Presença" id="presencaValor{{i}}"></td>
+            <td><input matInput placeholder="Insira a Nota Final do Aluno" id="notaFinalValor{{i}}"></td>
+            <td><button (click)="Avaliacao(turma, i)">Avaliar</button></td>
+            <td>{{turma.status}}</td>
+            
+        </tr>
+    </tbody>
+</table>

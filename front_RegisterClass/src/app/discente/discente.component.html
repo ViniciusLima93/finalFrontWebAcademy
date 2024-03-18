@@ -1,0 +1,54 @@
+<mat-card>
+    <h2>{{ novoDiscente.Matricula ? 'Editar Discente' : 'Adicionar Discente' }}</h2>
+    <form (submit)="novoDiscente.Matricula  ? atualizarDiscente() : adicionarDiscentes()">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" [(ngModel)]="novoDiscente.Nome" name="nome" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput type="text" [(ngModel)]="novoDiscente.Nascimento" name="nascimento" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" [(ngModel)]="novoDiscente.Email" name="email" required>
+      </mat-form-field>
+  
+    
+      <button mat-raised-button type="submit">{{ novoDiscente.Matricula ? 'Atualizar Discente' : 'Adicionar Discente' }}</button>
+    </form>
+    <button mat-stroked-button type="button" (click)="cancelarEdicao()">Cancelar</button>
+  </mat-card>
+
+  <!-- <mat-card *ngIf="detalhesMateria">
+    <h2>Detalhes da Matéria</h2>
+    <p>Carga Horária: {{ detalhesMateria.CargaHoraria }}</p>
+    <p>Ementa: {{ detalhesMateria.Ementa }}</p>
+    <p>ID do Curso: {{ detalhesMateria.fk_Curso_ID_Curso }}</p>
+    <p>Nome do Curso: {{ detalhesCurso?.Nome }}</p>
+</mat-card> -->
+
+  <h2>Discentes Cadastrados</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Maticula</th>
+        <th>Nome</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let discente of discentes">
+        <td>{{ discente.Matricula }}</td>
+        <td>{{ discente.Nome }}</td>
+        <!-- <td><button mat-stroked-button (click)="mostrarDetalhes(materia)">Detalhes</button></td> -->
+        <td>
+          <button mat-button (click)="atualizarDiscente()"><mat-icon>edit</mat-icon></button>
+          <button mat-button (click)="deletarDiscente(discente)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,77 @@
+<mat-card>
+  <h2>Cadastrar/Editar Turma</h2>
+  <form *ngIf="!turmaSelecionada" (submit)="cadastrarTurma()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome:</mat-label>
+      <input matInput type="text" [(ngModel)]="novaTurma.Nome" name="Nome" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Materia:</mat-label>
+      <mat-select [(ngModel)]="novaTurma.ID_Materia" name="ID_Materia" required>
+        <mat-option *ngFor="let materia of materias" [value]="materia.ID_Materia">{{ materia.Nome }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Docente:</mat-label>
+      <mat-select [(ngModel)]="novaTurma.Matricula_Docente" name="Matricula_Docente">
+        <mat-option *ngFor="let docente of docentes" [value]="docente.Matricula">{{ docente.Nome }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <button mat-raised-button type="submit"  >Cadastrar</button>
+  </form>
+
+  <form *ngIf="turmaSelecionada" (submit)="confirmarEdicao()">
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput type="text" [(ngModel)]="turmaSelecionada.Nome" name="Nome" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Materia:</mat-label>
+      <mat-select [(ngModel)]="turmaSelecionada.ID_Materia" name="ID_Materia" required>
+        <mat-option *ngFor="let materia of materias" [value]="materia.ID_Materia">{{ materia.Nome }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+    <mat-label>Docente:</mat-label>
+    <mat-select [(ngModel)]="turmaSelecionada.Matricula_Docente" name="Matricula_Docente">
+      <mat-option *ngFor="let docente of docentes" [value]="docente.Matricula">{{ docente.Nome }}</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    
+    <button mat-raised-button style=" background-color:	#00FF7F;" type="submit">Confirmar</button>
+
+  </form>
+  <button mat-stroked-button type="button" (click)="cancelarEdicao()" >Cancelar</button>
+</mat-card>
+
+
+<div class="tabela">
+  <h2>Lista de Turmas</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Materia</th>
+        <th>Docente</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turma of turmas">
+        <td>{{ turma.Nome }}</td>
+        <td>{{ turma.NomeMateria }}</td>
+        <td>{{ turma.NomeDocente }}</td>
+        <td>
+          <button mat-button type="button" (click)="alterarTurma(turma)"><mat-icon>edit</mat-icon></button>
+          <button mat-button type="button" (click)="deletarTurma(turma.ID_Turma)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
