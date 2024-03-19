@@ -54,12 +54,13 @@ export class CursoComponent implements OnInit {
         .subscribe(
           () => {
             console.log('Curso deletado com sucesso');
-            this.carregarCursos();
+            
           },
           error => {
             console.error('Erro ao deletar curso:', error);
           }
         );
+        this.carregarCursos();
     } else {
       console.error('ID do curso é undefined');
     }
@@ -72,12 +73,12 @@ export class CursoComponent implements OnInit {
         .subscribe(
           (curso: Curso) => {
             console.log('Curso adicionado com sucesso');
-            this.carregarCursos();
           },
           error => {
             console.error('Erro ao adicionar curso:', error);
           }
         );
+        this.carregarCursos();
     } else {
       console.error('Nome do curso não pode estar vazio');
     }
@@ -99,19 +100,20 @@ export class CursoComponent implements OnInit {
 
   atualizarCurso(curso: Curso): void {
     const novoNome = prompt('Digite o novo nome para o curso:', curso.Nome);
-    if (novoNome !== null) {
-      const cursoAtualizado: Curso = { ...curso, Nome: novoNome };
+    const novaVagas = prompt('Digite novo numero de vagas:', curso.Vagas.toString())
+    if (novoNome !== null && novaVagas !== null) {
+      const cursoAtualizado: Curso = { ...curso, Nome: novoNome, Vagas: parseFloat(novaVagas) };
       if (curso.ID_Curso !== undefined) {
         this.cursoService.atualizarCurso(curso.ID_Curso, cursoAtualizado)
           .subscribe(
             () => {
               console.log('Curso atualizado com sucesso');
-              this.carregarCursos();
             },
             error => {
               console.error('Erro ao atualizar curso:', error);
             }
           );
+          this.carregarCursos();
       } else {
         console.error('ID do curso é undefined');
       }

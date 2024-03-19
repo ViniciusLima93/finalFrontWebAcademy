@@ -73,9 +73,10 @@ export class MateriaComponent implements OnInit {
         CargaHoraria: '',
         Ementa: '',
         fk_Curso_ID_Curso: null
-      };
+      }
       this.getMaterias();
     });
+    
   }
 
   atualizarMateria(): void {

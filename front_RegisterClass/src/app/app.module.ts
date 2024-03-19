@@ -17,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatriculaTurmaService } from './services/matricula-turma.service';
 import { MateriaService } from './services/materia.service';
 import { CursoService } from './services/curso.service';
-import { InicioComponent } from './pages/inicio/inicio.component';
 import { DiscenteComponent } from './discente/discente.component';
 import { PresencaComponent } from './presenca/presenca.component';
 import { AboutComponent } from './about/about.component';
@@ -30,7 +29,6 @@ import { MatCardModule } from '@angular/material/card';
         AppComponent,
         DashboardComponent,
         AppComponent,
-        InicioComponent,
         AboutComponent,
       
      
