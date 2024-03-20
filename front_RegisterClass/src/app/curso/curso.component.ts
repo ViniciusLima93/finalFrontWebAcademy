@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Curso } from '../services/Curso';
 import { CursoService } from '../services/curso.service';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +10,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+
+import { ChangeDetectorRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-curso',
@@ -29,8 +31,10 @@ import { MatIconModule } from '@angular/material/icon';
 export class CursoComponent implements OnInit {
 
   cursos: Curso[] = [];
+  @ViewChild('nomeCursoInput') nomeCursoInput!: ElementRef<HTMLInputElement>
+  @ViewChild('vagasCursosInput') vagasCursoInput!: ElementRef<HTMLInputElement>
 
-  constructor(private cursoService: CursoService) { }
+  constructor(private cursoService: CursoService, private changeDetectorRef : ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.carregarCursos();
@@ -60,6 +64,7 @@ export class CursoComponent implements OnInit {
             console.error('Erro ao deletar curso:', error);
           }
         );
+        this.changeDetectorRef.detectChanges()
         this.carregarCursos();
     } else {
       console.error('ID do curso é undefined');
@@ -67,18 +72,24 @@ export class CursoComponent implements OnInit {
   }
 
   criarCurso(nomeCurso: string, vagas: number): void {
-    if (nomeCurso.trim()) {
+    if (nomeCurso.trim() && vagas > 0) {
       const novoCurso: Curso = { Nome: nomeCurso, Vagas: vagas };
       this.cursoService.adicionarCurso(novoCurso)
         .subscribe(
           (curso: Curso) => {
             console.log('Curso adicionado com sucesso');
+            
           },
           error => {
             console.error('Erro ao adicionar curso:', error);
           }
         );
+        this.changeDetectorRef.detectChanges()
         this.carregarCursos();
+        this.nomeCursoInput.nativeElement.value = '';
+        this.vagasCursoInput.nativeElement.value = '';
+
+         
     } else {
       console.error('Nome do curso não pode estar vazio');
     }

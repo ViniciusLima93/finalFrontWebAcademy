@@ -60,9 +60,9 @@ export class DiscenteComponent implements OnInit {
         Nome: '',
         Nascimento: '',
         Email: ''
-      };
+      }});
       this.getDiscentes()
-    })
+    
   }
 
   atualizarDiscente(): void {

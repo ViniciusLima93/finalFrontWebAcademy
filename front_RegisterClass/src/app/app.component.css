@@ -25,3 +25,8 @@ mat-sidenav{
     background-color: #eee ; 
     padding: 10px;
 }
+
+
+.mat-list-base {
+    padding-bottom: 12px;
+}

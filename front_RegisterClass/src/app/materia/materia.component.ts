@@ -10,6 +10,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+
+import { ChangeDetectorRef, ViewChild } from '@angular/core';
+
 @Component({
   selector: 'app-materia',
   templateUrl: './materia.component.html',
@@ -28,6 +31,8 @@ MatTableModule]
 })
 export class MateriaComponent implements OnInit {
 
+
+
   materias!: any[];
   cursos!: any[];
   detalhesMateria: any;
@@ -40,7 +45,7 @@ export class MateriaComponent implements OnInit {
     fk_Curso_ID_Curso: null
   };
 
-  constructor(private materiaService: MateriaService) { }
+  constructor(private materiaService: MateriaService, private changeDetectorRef : ChangeDetectorRef ) { }
 
   ngOnInit(): void {
     this.getMaterias();
@@ -73,10 +78,10 @@ export class MateriaComponent implements OnInit {
         CargaHoraria: '',
         Ementa: '',
         fk_Curso_ID_Curso: null
-      }
+      }});
+      this.changeDetectorRef.detectChanges()
       this.getMaterias();
-    });
-    
+
   }
 
   atualizarMateria(): void {
@@ -97,10 +102,10 @@ export class MateriaComponent implements OnInit {
   deletarMateria(materia: any): void {
     this.materiaService.deletarMateria(materia).subscribe(() => {
       console.log('Matéria deletada com sucesso!');
-      this.getMaterias();
     }, error => {
       console.error('Erro ao deletar matéria:', error);
     });
+    this.getMaterias();
   }
 
   editarMateria(materia: any): void {

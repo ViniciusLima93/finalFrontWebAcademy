@@ -86,9 +86,9 @@ export class TurmaComponent implements OnInit {
 
   cadastrarTurma(): void {
     this.turmaService.cadastrarTurma(this.novaTurma).subscribe(() => {
-      this.carregarTurmas();
       this.novaTurma = {};
     });
+    this.carregarTurmas();
     
   }
 

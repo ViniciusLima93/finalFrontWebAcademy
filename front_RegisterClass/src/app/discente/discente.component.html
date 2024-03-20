@@ -17,18 +17,11 @@
       </mat-form-field>
   
     
-      <button mat-raised-button type="submit">{{ novoDiscente.Matricula ? 'Atualizar Discente' : 'Adicionar Discente' }}</button>
+      <button mat-raised-button  style=" background-color:	#00FF7F;" type="submit">{{ novoDiscente.Matricula ? 'Atualizar Discente' : 'Adicionar Discente' }}</button>
     </form>
     <button mat-stroked-button type="button" (click)="cancelarEdicao()">Cancelar</button>
   </mat-card>
 
-  <!-- <mat-card *ngIf="detalhesMateria">
-    <h2>Detalhes da Matéria</h2>
-    <p>Carga Horária: {{ detalhesMateria.CargaHoraria }}</p>
-    <p>Ementa: {{ detalhesMateria.Ementa }}</p>
-    <p>ID do Curso: {{ detalhesMateria.fk_Curso_ID_Curso }}</p>
-    <p>Nome do Curso: {{ detalhesCurso?.Nome }}</p>
-</mat-card> -->
 
   <h2>Discentes Cadastrados</h2>
   <table>

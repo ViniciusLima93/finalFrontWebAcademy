@@ -9,6 +9,7 @@ import { MateriaComponent } from './materia/materia.component';
 import { DiscenteComponent } from './discente/discente.component';
 import { PresencaComponent } from './presenca/presenca.component';
 import { AboutComponent } from './about/about.component';
+import { DocenteComponent } from './docente/docente.component';
 
 const routes: Routes = [
 
@@ -37,6 +38,9 @@ const routes: Routes = [
   },
   {
     path:'discente', component: DiscenteComponent
+  },
+  {
+    path:'docente', component: DocenteComponent
   },
   {
     path:'presenca', component: PresencaComponent

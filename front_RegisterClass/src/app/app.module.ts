@@ -21,6 +21,7 @@ import { DiscenteComponent } from './discente/discente.component';
 import { PresencaComponent } from './presenca/presenca.component';
 import { AboutComponent } from './about/about.component';
 import { MatCardModule } from '@angular/material/card';
+import { DocenteComponent } from './docente/docente.component';
 
 
 
@@ -30,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
         DashboardComponent,
         AppComponent,
         AboutComponent,
+        DocenteComponent,
       
      
         

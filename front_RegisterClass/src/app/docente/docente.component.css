@@ -56,10 +56,4 @@ mat-form-field {
     margin-left: 10px;
   }
   
-  .createcurso {
-    display: flex;
-    justify-content: center !important;
-    align-items:center !important ;
-    margin-left: 220px;
-  }
 

@@ -1,0 +1,29 @@
+<mat-card>
+    <h2>Adicionar Docente</h2>
+    <form (submit)="cadastrarDocente()">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" [(ngModel)]="novoDocente.Nome" name="nome" required>
+      </mat-form-field>
+  
+    
+      <button mat-raised-button style=" background-color:	#00FF7F;" type="submit">Adicionar Docente</button>
+    </form>
+  </mat-card>
+
+
+  <h2>Discentes Cadastrados</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Maticula</th>
+        <th>Nome</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let docente of docentes">
+        <td>{{ docente.Matricula }}</td>
+        <td>{{ docente.Nome }}</td>
+      </tr>
+    </tbody>
+  </table>
