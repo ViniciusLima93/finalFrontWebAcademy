@@ -4,15 +4,14 @@ mat-card{
     padding: 20px;
     border: 1px solid #C0C0C0;
 
-    display: block;
       
 }
 
 
-.mat-form-field {
+mat-form-field {
   display: flex;
   align-items: center;
-  width: 40%;
+  justify-content: center;
   margin-bottom: 0;
   margin-top: 10px;
 }
@@ -55,7 +54,17 @@ mat-card{
   }
   
   button {
+    
+    margin-top: 10px;
     margin-left: 10px;
   }
+
+  .createcurso {
+    display: flex;
+    justify-content: center !important;
+    align-items:center !important ;
+    margin-left: 220px;
+  }
+
   
 
